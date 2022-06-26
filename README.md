@@ -36,11 +36,12 @@ df : pd.DataFrame = process(token)
 ```
 
 ### Example 2: load latest data
+```python
 from finrashortdata import get_chunk_and_size, process
 
 chunk, max_data = get_chunk_and_size(token)
 df : pd.DataFrame = process(token=token, offset=max_data-10*chunk)
-
+```
 
 
 ## Licensing
