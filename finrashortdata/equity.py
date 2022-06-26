@@ -6,6 +6,8 @@ from typing import Optional, Tuple
 import pandas as pd
 import requests
 
+from .decorators import timeit
+
 url: str = "https://api.finra.org/data/group/OTCMarket/name/regShoDaily"
 
 
@@ -28,7 +30,12 @@ def _requests_get(token: str, chunk_size: int, offset: int) -> pd.DataFrame:
     x = r.json()
     df = pd.DataFrame(x)
     df.rename(
-        columns={"securitiesInformationProcessorSymbolIdentifier": "symbol"},
+        columns={
+            "securitiesInformationProcessorSymbolIdentifier": "symbol",
+            "totalParQuantity": "volume",
+            "shortParQuantity": "shorts",
+            "shortExemptParQuantity": "exempt",
+        },
         inplace=True,
     )
     df.drop(["reportingFacilityCode", "marketCode"], axis=1, inplace=True)
@@ -54,10 +61,10 @@ def get_chunk_and_size(token: str) -> Tuple[int, int]:
         params={"limit": 1},
     )
     r.raise_for_status()
-
     return int(r.headers["Record-Max-Limit"]), int(r.headers["Record-Total"])
 
 
+@timeit
 async def process(
     token: str, offset: int = 0, limit: Optional[int] = None
 ) -> pd.DataFrame:
@@ -77,7 +84,6 @@ async def process(
     print(
         f"loading data (chunk_size={chunk_size}, max_records={max_records-offset})..."
     )
-    returned_df: pd.DataFrame = pd.DataFrame()
     with concurrent.futures.ThreadPoolExecutor() as executor:
         loop = asyncio.get_event_loop()
         futures = [
@@ -86,7 +92,12 @@ async def process(
             )
             for offset in range(offset, max_records, chunk_size)
         ]
-        returned_df = pd.concat(await asyncio.gather(*futures))
-        print(returned_df.shape, max_records)
+        df = (
+            pd.concat(await asyncio.gather(*futures))
+            .groupby(["tradeReportDate", "symbol"])
+            .sum()
+        )
 
-    return returned_df.groupby(["tradeReportDate", "symbol"]).sum()
+    df["short_percent"] = round(100.0 * df.shorts / df.volume, 1)
+
+    return df
