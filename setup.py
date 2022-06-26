@@ -35,7 +35,9 @@ setuptools.setup(
     url="https://github.com/amor71/FINRAShortData",
     license="GNU GPL v3.0",
     install_requires=requirements,
-    data_files=[("finrashortdata", ["requirements/release.txt"])],
+    data_files=[
+        ("finrashortdata", ["finrashortdata/requirements/release.txt"])
+    ],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.9",
