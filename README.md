@@ -20,5 +20,5 @@ To install the package type:
 ```python
 import FINRAShortData as sho
 
-token = sho.authorize(id=<your_api_client>, secret=<your_secret>)
+token = sho.authorize(id=`your_api_client_id`, secret=`your_api_secret`)
 ```
