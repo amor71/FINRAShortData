@@ -12,6 +12,9 @@ def auth(client_id: str, secret: str) -> str:
     Returns: If successful returns generated token, otherwise throws exception.
     """
 
+    if not client_id or not secret:
+        raise TypeError("client_id and secret can not be None")
+
     url = "https://ews.fip.finra.org/fip/rest/ews/oauth2/access_token"
     params = {"grant_type": "client_credentials"}
     auth = HTTPBasicAuth(client_id, secret)

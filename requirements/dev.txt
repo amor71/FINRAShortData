@@ -6,3 +6,6 @@ bandit
 isort
 mypy
 requests
+pytest
+pytest-asyncio
+
