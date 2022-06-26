@@ -1,6 +1,7 @@
-[![Updates](https://pyup.io/repos/github/amor71/finrashortdata/shield.svg)](https://pyup.io/repos/github/amor71/finrashortdata/)
-[![Python 3](https://pyup.io/repos/github/amor71/finrashortdata/python-3-shield.svg)](https://pyup.io/repos/github/amor71/finrashortdata/)
+[![Python 3](https://pyup.io/repos/github/amor71/FINRAShortData/python-3-shield.svg)](https://pyup.io/repos/github/amor71/FINRAShortData/)
+[![Updates](https://pyup.io/repos/github/amor71/FINRAShortData/shield.svg)](https://pyup.io/repos/github/amor71/FINRAShortData/)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
+[![codecov](https://codecov.io/gh/amor71/FINRAShortData/branch/main/graph/badge.svg?token=Gy7JKcpOqh)](https://codecov.io/gh/amor71/FINRAShortData)
 
 # FINRAShortData
 Process FINRA Short Daily Data [feeds](https://developer.finra.org/docs#query_api-equity-equity_short_interest_standardized)
@@ -22,17 +23,25 @@ To install the package type:
 ### Authenticate
 
 ```python
- from finrashortdata import auth
+from finrashortdata import auth
 token = auth(client_id=<your api client id>, secret=<your api secret>)
 ```
 
-### Basic data loading & processing
+### Example 1: Basic data loading & processing
 
 ```python
- from finrashortdata import process
+from finrashortdata import process
 import pandas as pd
 df : pd.DataFrame = process(token)
 ```
+
+### Example 2: load latest data
+from finrashortdata import get_chunk_and_size, process
+
+chunk, max_data = get_chunk_and_size(token)
+df : pd.DataFrame = process(token=token, offset=max_data-10*chunk)
+
+
 
 ## Licensing
 
