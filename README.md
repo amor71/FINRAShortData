@@ -19,6 +19,12 @@ To install the package type:
 
 ```python
 import FINRAShortData as sho
+token = sho.authorize(id=<your api client id>, secret=<your api secret>)
+```
 
-token = sho.authorize(id=`your_api_client_id`, secret=`your_api_secret`)
+### Basic data loading & processing
+
+```python
+import pandas as pd
+df : pd.DataFrame = sho.process(token)
 ```
