@@ -6,7 +6,7 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with open("requirements/release.txt") as f:
+with open("finrashortdata/requirements/release.txt") as f:
     requirements = f.read().splitlines()
 
 
@@ -35,7 +35,9 @@ setuptools.setup(
     url="https://github.com/amor71/FINRAShortData",
     license="GNU GPL v3.0",
     install_requires=requirements,
-    data_files=[("finrashortdata", ["requirements/release.txt"])],
+    data_files=[
+        ("finrashortdata", ["finrashortdata/requirements/release.txt"])
+    ],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.9",

@@ -9,4 +9,5 @@ requests
 pytest
 pytest-asyncio
 jupyter
+pytest-cov
 
