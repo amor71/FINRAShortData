@@ -17,6 +17,6 @@ jobs:
     - name: Install requirements
       run: pip install -r finrashortdata/requirements/dev.txt
     - name: Run tests and collect coverage
-      run: export PYTHONPATH=. & pytest --cov --co .
+      run: pytest --cov --co --cov-config=.coveragerc .
     - name: Upload coverage reports to Codecov with GitHub Action
       uses: codecov/codecov-action@v3
