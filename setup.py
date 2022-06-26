@@ -6,7 +6,7 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with open("requirements/release.txt") as f:
+with open("finrashortdata/requirements/release.txt") as f:
     requirements = f.read().splitlines()
 
 
