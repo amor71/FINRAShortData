@@ -37,9 +37,9 @@ df : pd.DataFrame = daily_shorts(token)
 
 ### Example 2: load latest data
 ```python
-from finrashortdata import get_chunk_and_size, daily_shorts
+from finrashortdata import daily_shorts_chunk_and_size, daily_shorts
 
-chunk, max_data = get_chunk_and_size(token)
+chunk, max_data = daily_shorts_chunk_and_size(token)
 df : pd.DataFrame = daily_shorts(token=token, offset=max_data-10*chunk)
 ```
 
