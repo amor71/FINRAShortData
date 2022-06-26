@@ -23,7 +23,7 @@ To install the package type:
 
 ```python
 import finrashortdata as sho
-token = sho.authorize(id=<your api client id>, secret=<your api secret>)
+token = sho.auth(id=<your api client id>, secret=<your api secret>)
 ```
 
 ### Basic data loading & processing
