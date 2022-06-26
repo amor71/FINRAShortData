@@ -1,3 +1,7 @@
+[![Updates](https://pyup.io/repos/github/amor71/finrashortdata/shield.svg)](https://pyup.io/repos/github/amor71/finrashortdata/)
+[![Python 3](https://pyup.io/repos/github/amor71/finrashortdata/python-3-shield.svg)](https://pyup.io/repos/github/amor71/finrashortdata/)
+[![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
+
 # FINRAShortData
 Process FINRA Short Daily Data [feeds](https://developer.finra.org/docs#query_api-equity-equity_short_interest_standardized)
 

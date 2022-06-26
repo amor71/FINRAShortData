@@ -33,7 +33,7 @@ setuptools.setup(
     description="Process FINRA Short Daily Data feeds",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url=https://github.com/amor71/FINRAShortData",
+    url="https://github.com/amor71/FINRAShortData",
     license="GNU GPL v3.0",
     install_requires=requirements,
     data_files=[("finrashortdata", ["requirements/release.txt"])],
