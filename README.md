@@ -22,15 +22,16 @@ To install the package type:
 ### Authenticate
 
 ```python
-import finrashortdata as sho
-token = sho.auth(id=<your api client id>, secret=<your api secret>)
+ from finrashortdata import auth
+token = auth(client_id=<your api client id>, secret=<your api secret>)
 ```
 
 ### Basic data loading & processing
 
 ```python
+ from finrashortdata import process
 import pandas as pd
-df : pd.DataFrame = sho.process(token)
+df : pd.DataFrame = process(token)
 ```
 
 ## Licensing

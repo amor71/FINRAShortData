@@ -1,3 +1,8 @@
 pandas
 black
 therapist
+autoflake
+bandit
+isort
+mypy
+requests
