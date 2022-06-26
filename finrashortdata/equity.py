@@ -82,7 +82,7 @@ async def process(
         max_records = min(max_records, limit)
 
     print(
-        f"loading data (chunk_size={chunk_size}, max_records={max_records-offset})..."
+        f"loading data (chunk_size={chunk_size}, offset={offset}, max_records={max_records-offset})..."
     )
     with concurrent.futures.ThreadPoolExecutor() as executor:
         loop = asyncio.get_event_loop()

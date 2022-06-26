@@ -1,6 +1,7 @@
 import os
 
 import pytest
+from requests.exceptions import HTTPError
 
 from finrashortdata import auth
 
@@ -19,6 +20,15 @@ def test_auth_positive() -> bool:
     print(token)
 
     return True
+
+
+def test_auth_negative() -> bool:
+    try:
+        auth("some in correct stuff", "lead to error")
+    except HTTPError:
+        return True
+
+    raise AssertionError("Excepted HTTPError")
 
 
 def test_auth_no_type() -> bool:
