@@ -1,5 +1,5 @@
 # FINRAShortData
-Process FINRA Short Daily Data feeds
+Process FINRA Short Daily Data [feeds](https://developer.finra.org/docs#query_api-equity-equity_short_interest_standardized)
 
 ## Prerequisite
 
@@ -18,7 +18,7 @@ To install the package type:
 ### Authenticate
 
 ```python
-import FINRAShortData as sho
+import finrashortdata as sho
 token = sho.authorize(id=<your api client id>, secret=<your api secret>)
 ```
 
