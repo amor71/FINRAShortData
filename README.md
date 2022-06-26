@@ -28,3 +28,18 @@ token = sho.authorize(id=<your api client id>, secret=<your api secret>)
 import pandas as pd
 df : pd.DataFrame = sho.process(token)
 ```
+
+## Licensing
+
+[GNU GPL v.3](https://github.com/amor71/FINRAShortData/blob/main/LICENSE)
+
+## Questions & Comments
+
+Use the [Issues](https://github.com/amor71/FINRAShortData/issues) section
+
+## Contributing
+
+If you'd like to contribute to the project, drop me a line at mailto:amor71@sgeltd.com
+
+
+
