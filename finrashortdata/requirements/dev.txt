@@ -8,4 +8,4 @@ mypy
 requests
 pytest
 pytest-asyncio
-
+pytest-cov
