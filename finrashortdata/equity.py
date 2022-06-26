@@ -45,9 +45,9 @@ def _requests_get(token: str, chunk_size: int, offset: int) -> pd.DataFrame:
 def get_chunk_and_size(token: str) -> Tuple[int, int]:
     """Return the optimal chunk size and total number of data-points,
 
-    Chunk size is used internally, by the process() function
+    Chunk size is used internally, by the daily_shorts() function
     to reduce the number of calls to the FINRA end-point,
-    it is also used as the 'offset' step when calling process() directly with restrictions.
+    it is also used as the 'offset' step when calling daily_shorts() directly with restrictions.
 
     Input Arguments: token obtained from the auth() function.
     Returns: tuple with chunk size followed by number of data-points to be loaded from FINRA end-point.
@@ -65,7 +65,7 @@ def get_chunk_and_size(token: str) -> Tuple[int, int]:
 
 
 @timeit
-async def process(
+async def daily_shorts(
     token: str, offset: int = 0, limit: Optional[int] = None
 ) -> pd.DataFrame:
     """Download Daily Short details

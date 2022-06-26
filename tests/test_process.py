@@ -3,10 +3,10 @@ import os
 import pandas as pd
 import pytest
 
-from finrashortdata import auth, get_chunk_and_size, process
+from finrashortdata import auth, daily_shorts, get_chunk_and_size
 
 
-async def test_process_positive() -> bool:
+async def test_daily_shorts_positive() -> bool:
     client_id = os.getenv("TEST_API_CLIENT_ID", None)
     secret = os.getenv("TEST_API_SECRET", None)
 
@@ -16,13 +16,15 @@ async def test_process_positive() -> bool:
         )
     token = auth(client_id, secret)
     chunk, max_data = get_chunk_and_size(token)
-    _df: pd.DataFrame = await process(token=token, offset=max_data - chunk)
+    _df: pd.DataFrame = await daily_shorts(
+        token=token, offset=max_data - chunk
+    )
     print(_df)
 
     return True
 
 
-async def test_process_positive_limit() -> bool:
+async def test_daily_shorts_positive_limit() -> bool:
     client_id = os.getenv("TEST_API_CLIENT_ID", None)
     secret = os.getenv("TEST_API_SECRET", None)
 
@@ -32,7 +34,7 @@ async def test_process_positive_limit() -> bool:
         )
     token = auth(client_id, secret)
     chunk, max_data = get_chunk_and_size(token)
-    _df: pd.DataFrame = await process(token=token, offset=0, limit=chunk)
+    _df: pd.DataFrame = await daily_shorts(token=token, offset=0, limit=chunk)
     print(_df)
 
     return True

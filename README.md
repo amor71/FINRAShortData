@@ -30,17 +30,17 @@ token = auth(client_id=<your api client id>, secret=<your api secret>)
 ### Example 1: Basic data loading & processing
 
 ```python
-from finrashortdata import process
+from finrashortdata import daily_shorts
 import pandas as pd
-df : pd.DataFrame = process(token)
+df : pd.DataFrame = daily_shorts(token)
 ```
 
 ### Example 2: load latest data
 ```python
-from finrashortdata import get_chunk_and_size, process
+from finrashortdata import get_chunk_and_size, daily_shorts
 
 chunk, max_data = get_chunk_and_size(token)
-df : pd.DataFrame = process(token=token, offset=max_data-10*chunk)
+df : pd.DataFrame = daily_shorts(token=token, offset=max_data-10*chunk)
 ```
 
 
