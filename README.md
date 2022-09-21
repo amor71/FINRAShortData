@@ -55,6 +55,3 @@ Use the [Issues](https://github.com/amor71/FINRAShortData/issues) section
 ## Contributing
 
 If you'd like to contribute to the project, drop me a line at mailto:amor71@sgeltd.com
-
-
-
