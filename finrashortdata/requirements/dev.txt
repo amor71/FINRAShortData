@@ -10,4 +10,4 @@ pytest
 pytest-asyncio
 jupyter
 pytest-cov
-
+pandas_market_calendars
