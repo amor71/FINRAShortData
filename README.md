@@ -4,13 +4,8 @@
 [![codecov](https://codecov.io/gh/amor71/FINRAShortData/branch/main/graph/badge.svg?token=Gy7JKcpOqh)](https://codecov.io/gh/amor71/FINRAShortData)
 
 # FINRAShortData
-Process FINRA Short Daily Data [feeds](https://developer.finra.org/docs#query_api-equity-equity_short_interest_standardized)
 
-## Prerequisite
-
-* FINRA Developer Credentials are required. If you do not yet have an account, [create one here](https://developer.finra.org/create-account?Forward_URL=https://gateway.finra.org/app/dfo-console?rcpRedirNum=1).
-
-* Once you have access, you will need to create an API key. Daily Short Data feeds are free. [click here](https://gateway.finra.org/app/api-console/add-credential) to create API credential and follow the instructions.
+Process FINRA Short Daily Data [feeds](https://www.finra.org/finra-data/browse-catalog/short-sale-volume-data/daily-short-sale-volume-files)
 
 ## Install
 
@@ -20,29 +15,30 @@ To install the package type:
 
 ## Quick start
 
-### Authenticate
+### Example 1: Daily Short Volumes for past 2 days (inclusive)
 
 ```python
-from finrashortdata import auth
-token = auth(client_id=<your api client id>, secret=<your api secret>)
-```
-
-### Example 1: Basic data loading & processing
-
-```python
+import asyncio
 from finrashortdata import daily_shorts
 import pandas as pd
-df : pd.DataFrame = daily_shorts(token)
+
+df : pd.DataFrame = asyncio.run(daily_shorts(offset=2))
 ```
 
-### Example 2: load latest data
+### Example 2: Daily Short Volumes for time_range
+
 ```python
-from finrashortdata import daily_shorts_chunk_and_size, daily_shorts
+import asyncio
+from finrashortdata import daily_shorts
+from datetime import date
+import pandas as pd
 
-chunk, max_data = daily_shorts_chunk_and_size(token)
-df : pd.DataFrame = daily_shorts(token=token, offset=max_data-10*chunk)
+df : pd.DataFrame = asyncio.run(daily_shorts(
+    start_date=date(year=2022, month=9, day=1), 
+    end_date=date(year=2022, month=9, day=10)))
 ```
 
+*Scripts work as-is*
 
 ## Licensing
 
@@ -55,6 +51,3 @@ Use the [Issues](https://github.com/amor71/FINRAShortData/issues) section
 ## Contributing
 
 If you'd like to contribute to the project, drop me a line at mailto:amor71@sgeltd.com
-
-
-

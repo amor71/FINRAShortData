@@ -1,4 +1,3 @@
-__version__ = "0.0.13"
+__version__ = "0.1.0"
 
-from .auth import auth
-from .daily import daily_shorts, daily_shorts_chunk_and_size
+from .daily import daily_shorts
